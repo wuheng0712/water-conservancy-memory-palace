@@ -5,85 +5,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>250考点记忆宫殿实战手册</title>
     <style>
-        body { font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; line-height: 1.6; color: #333; max-width: 1000px; margin: 0 auto; padding: 20px; background-color: #f4f7f6; }
-        h1 { text-align: center; color: #2c3e50; border-bottom: 2px solid #2c3e50; padding-bottom: 10px; }
-        .scene { background: #fff; margin-bottom: 40px; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
-        .scene-title { font-size: 1.8rem; color: #e67e22; border-left: 6px solid #e67e22; padding-left: 15px; margin-bottom: 20px; }
-        .location { margin-bottom: 30px; border-bottom: 1px dashed #ddd; padding-bottom: 20px; }
-        .location-title { font-size: 1.4rem; color: #2980b9; margin-bottom: 15px; display: flex; align-items: center; }
-        .location-title::before { content: '📍'; margin-right: 10px; }
-        .location-img { width: 100%; max-height: 400px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-        .items-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; }
-        .item-card { background: #f9f9f9; border: 1px solid #eee; padding: 15px; border-radius: 8px; transition: transform 0.2s; }
-        .item-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); background: #fff; }
-        .anchor { font-weight: bold; color: #c0392b; display: block; margin-bottom: 8px; font-size: 1.1rem; }
-        .point { font-size: 0.95rem; color: #444; }
-        .id-badge { background: #2c3e50; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; margin-right: 8px; }
-        .nav { position: fixed; right: 20px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.9); padding: 15px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: none; }
-        @media (min-width: 1200px) { .nav { display: block; } }
-        .nav a { display: block; margin: 10px 0; color: #2980b9; text-decoration: none; font-size: 0.9rem; }
-        .nav a:hover { text-decoration: underline; }
+        body { font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; line-height: 1.6; color: #333; max-width: 1200px; margin: 0 auto; padding: 20px; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); }
+        h1 { text-align: center; color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 15px; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
+        .scene { background: #fff; margin-bottom: 50px; padding: 30px; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.12); }
+        .scene-title { font-size: 2rem; color: #e67e22; border-left: 8px solid #e67e22; padding-left: 20px; margin-bottom: 25px; font-weight: bold; }
+        .location { margin-bottom: 40px; border-bottom: 2px dashed #ddd; padding-bottom: 25px; }
+        .location:last-child { border-bottom: none; }
+        .location-title { font-size: 1.5rem; color: #2980b9; margin-bottom: 15px; display: flex; align-items: center; font-weight: bold; }
+        .location-title::before { content: '📍'; margin-right: 12px; font-size: 1.8rem; }
+        .location-img { width: 100%; max-height: 450px; object-fit: cover; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); transition: transform 0.3s; }
+        .location-img:hover { transform: scale(1.02); }
+        .items-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; }
+        .item-card { background: linear-gradient(135deg, #f9f9f9 0%, #fff 100%); border: 2px solid #eee; padding: 18px; border-radius: 10px; transition: all 0.3s; }
+        .item-card:hover { transform: translateY(-8px); box-shadow: 0 8px 20px rgba(52, 152, 219, 0.2); border-color: #3498db; }
+        .anchor { font-weight: bold; color: #c0392b; display: block; margin-bottom: 10px; font-size: 1.05rem; }
+        .point { font-size: 0.92rem; color: #555; line-height: 1.5; }
+        .id-badge { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; padding: 3px 10px; border-radius: 5px; font-size: 0.85rem; margin-right: 8px; font-weight: bold; }
+        .intro { text-align: center; color: #7f8c8d; margin-bottom: 30px; font-size: 1.1rem; }
     </style>
 </head>
 <body>
-    <h1>250考点记忆宫殿实战手册</h1>
-    <p style="text-align: center; color: #666;">—— 5大场景 · 50个地点 · 250个考点 ——</p>
+    <h1>🏛️ 250考点记忆宫殿实战手册 🏛️</h1>
+    <p class="intro">—— 5大场景 · 50个地点 · 250个考点 · 图文并茂 ——</p>
 
     <div id="content"></div>
 
     <script>
-        // 模拟图片映射，实际应用中可以根据地点名称动态搜索或预设
+        // 地点与图片的精准映射
         const imageMap = {
-            "客厅电视区": "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=800&q=80",
-            "客厅休息区": "https://images.unsplash.com/photo-1554995207-c18c203602cb?auto=format&fit=crop&w=800&q=80",
-            "餐厅区域": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80",
-            "厨房操作台": "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80",
-            "厨房电器区": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80",
-            "阳台观景区": "https://images.unsplash.com/photo-1591088398332-8a77d399e80c?auto=format&fit=crop&w=800&q=80",
-            "阳台生活区": "https://images.unsplash.com/photo-1520242739010-44e95bde329e?auto=format&fit=crop&w=800&q=80",
-            "后花园入口": "https://images.unsplash.com/photo-1558904541-efa8c1965f1e?auto=format&fit=crop&w=800&q=80",
-            "后花园草坪": "https://images.unsplash.com/photo-1558904541-efa8c1965f1e?auto=format&fit=crop&w=800&q=80",
-            "后花园花坛": "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?auto=format&fit=crop&w=800&q=80",
-            "大人卧室": "https://images.unsplash.com/photo-1505693419148-403bb22b9f11?auto=format&fit=crop&w=800&q=80",
-            "小孩房间": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
-            "更衣室": "https://images.unsplash.com/photo-1558997519-53bb81063918?auto=format&fit=crop&w=800&q=80",
-            "浴室洗漱区": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80",
-            "浴室洗浴区": "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=800&q=80",
-            "书房阅读区": "https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=800&q=80",
-            "书房神圣区": "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=800&q=80",
-            "书房休息角": "https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=800&q=80",
-            "走廊过渡区": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
-            "玄关整理区": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
-            "男生宿舍": "https://images.unsplash.com/photo-1555854816-808228a371ed?auto=format&fit=crop&w=800&q=80",
-            "女生宿舍": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
-            "宿舍交流区": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80",
-            "书籍查阅区": "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=800&q=80",
-            "上网资料区": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=800&q=80",
-            "宿舍小食堂": "https://images.unsplash.com/photo-1567521464027-f127ff144326?auto=format&fit=crop&w=800&q=80",
-            "食堂取餐区": "https://images.unsplash.com/photo-1567521464027-f127ff144326?auto=format&fit=crop&w=800&q=80",
-            "食堂用餐区": "https://images.unsplash.com/photo-1567521464027-f127ff144326?auto=format&fit=crop&w=800&q=80",
-            "国际学校操场": "https://images.unsplash.com/photo-1541339907198-e08756edd81f?auto=format&fit=crop&w=800&q=80",
-            "国际学校礼堂": "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=800&q=80",
-            "台球厅": "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80",
-            "健身房器械区": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80",
-            "健身房臭美区": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80",
-            "高级澡堂入口": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80",
-            "高级澡堂泡澡区": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80",
-            "澡堂休息区": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80",
-            "高级餐厅": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80",
-            "餐厅包间": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80",
-            "品茶室": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80",
-            "茶室景观": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80",
-            "护士站": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80",
-            "医生办公室": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80",
-            "庸医诊室": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80",
-            "手术准备间": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80",
-            "第一次手术室": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80",
-            "术后住院部": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80",
-            "检查室": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80",
-            "高级手术室": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80",
-            "收费处": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80",
-            "药房": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80"
+            "客厅电视区": "images/01_living_tv.jpg",
+            "客厅休息区": "images/02_living_sofa.jpg",
+            "餐厅区域": "images/03_dining.jpg",
+            "厨房操作台": "images/04_kitchen_counter.jpg",
+            "厨房电器区": "images/05_kitchen_appliance.jpg",
+            "阳台观景区": "images/06_balcony_view.jpg",
+            "阳台生活区": "images/07_balcony_life.jpg",
+            "后花园入口": "images/08_garden_entrance.jpg",
+            "后花园草坪": "images/09_garden_lawn.jpg",
+            "后花园花坛": "images/10_garden_flower.jpg",
+            "大人卧室": "images/11_master_bedroom.jpg",
+            "小孩房间": "images/12_kids_room.jpg",
+            "更衣室": "images/13_wardrobe.jpg",
+            "浴室洗漱区": "images/14_bathroom_wash.jpg",
+            "浴室洗浴区": "images/15_bathroom_shower.jpg",
+            "书房阅读区": "images/16_study_reading.jpg",
+            "书房神圣区": "images/17_study_sacred.jpg",
+            "书房休息角": "images/18_study_rest.jpg",
+            "走廊过渡区": "images/19_corridor.jpg",
+            "玄关整理区": "images/20_entrance.jpg",
+            "男生宿舍": "images/21_dorm_male.jpg",
+            "女生宿舍": "images/22_dorm_female.jpg",
+            "宿舍交流区": "images/23_dorm_discuss.jpg",
+            "书籍查阅区": "images/24_book_area.jpg",
+            "上网资料区": "images/25_internet_area.jpg",
+            "宿舍小食堂": "images/26_canteen_small.jpg",
+            "食堂取餐区": "images/27_canteen_get.jpg",
+            "食堂用餐区": "images/28_canteen_eat.jpg",
+            "国际学校操场": "images/29_school_playground.jpg",
+            "国际学校礼堂": "images/30_school_hall.jpg",
+            "台球厅": "images/31_billiard.jpg",
+            "健身房器械区": "images/32_gym_equipment.jpg",
+            "健身房臭美区": "images/33_gym_mirror.jpg",
+            "高级澡堂入口": "images/34_spa_entrance.jpg",
+            "高级澡堂泡澡区": "images/35_spa_pool.jpg",
+            "澡堂休息区": "images/36_spa_rest.jpg",
+            "高级餐厅": "images/37_restaurant_high.jpg",
+            "餐厅包间": "images/38_restaurant_private.jpg",
+            "品茶室": "images/39_tea_room.jpg",
+            "茶室景观": "images/40_tea_view.jpg",
+            "护士站": "images/41_nurse_station.jpg",
+            "医生办公室": "images/42_doctor_office.jpg",
+            "庸医诊室": "images/43_bad_doctor.jpg",
+            "手术准备间": "images/44_surgery_prep.jpg",
+            "第一次手术室": "images/45_surgery_room1.jpg",
+            "术后住院部": "images/46_hospital_ward.jpg",
+            "检查室": "images/47_check_room.jpg",
+            "高级手术室": "images/48_surgery_room2.jpg",
+            "收费处": "images/49_cashier.jpg",
+            "药房": "images/50_pharmacy.jpg"
         };
 
         async function render() {
@@ -101,11 +100,11 @@
                     const locDiv = document.createElement('div');
                     locDiv.className = 'location';
                     
-                    const imgUrl = imageMap[loc.location_name] || "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80";
+                    const imgUrl = imageMap[loc.location_name] || "images/01_living_tv.jpg";
                     
                     locDiv.innerHTML = `
                         <div class="location-title">${loc.location_name}</div>
-                        <img class="location-img" src="${imgUrl}" alt="${loc.location_name}">
+                        <img class="location-img" src="${imgUrl}" alt="${loc.location_name}" loading="lazy">
                     `;
                     
                     const grid = document.createElement('div');
